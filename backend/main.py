@@ -11,6 +11,13 @@ import json
 import logging
 
 from agent.spreadsheet_agent import SpreadsheetAgent
+from dotenv import load_dotenv
+import os
+
+load_dotenv()  # This loads the .env file
+
+print("API KEY:", os.getenv("ANTHROPIC_API_KEY"))  # Temporary test
+
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)

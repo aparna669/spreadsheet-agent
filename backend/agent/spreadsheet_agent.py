@@ -4,7 +4,8 @@ from typing import Optional, Dict, Any
 import json
 import os
 from langchain_anthropic import ChatAnthropic
-from pydantic import SecretStr
+from pydantic.v1 import SecretStr
+
 from langchain_experimental.agents.agent_toolkits import create_pandas_dataframe_agent
 import matplotlib.pyplot as plt
 import io
@@ -31,12 +32,14 @@ class SpreadsheetAgent:
             raise ValueError("ANTHROPIC_API_KEY environment variable not set")
         
         self.llm = ChatAnthropic(
-            model_name="claude-sonnet-4-20250514",
-            api_key=SecretStr(api_key),
-            temperature=0,
-            timeout=60,
-            stop=None
-        )
+                model_name="claude-sonnet-4-20250514",
+                api_key=SecretStr(api_key),
+                temperature=0,
+                timeout=60
+)
+
+
+
         
         # Create pandas dataframe agent
         try:
